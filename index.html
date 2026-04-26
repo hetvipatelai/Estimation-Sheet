@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
     <div class="container">
         <!-- Page 1: Customer Details -->
@@ -14,18 +16,19 @@
             <div class="page-content">
                 <h1>Estimation Sheet</h1>
                 <p class="subtitle">Enter Your Details</p>
-                
+
                 <form id="customerForm">
                     <div class="form-group">
                         <label for="customerName">Name *</label>
                         <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="customerPhone">Phone Number *</label>
-                        <input type="tel" id="customerPhone" name="customerPhone" placeholder="Enter your phone number" pattern="[0-9\-\+\(\)\s]{10,}" required>
+                        <input type="tel" id="customerPhone" name="customerPhone" placeholder="Enter your phone number"
+                            pattern="[0-9\-\+\(\)\s]{10,}" required>
                     </div>
-                    
+
                     <button type="button" class="btn btn-primary" onclick="goToPage2()">Next</button>
                 </form>
             </div>
@@ -38,7 +41,7 @@
                     <h1>Add Products</h1>
                     <button type="button" class="btn btn-back" onclick="goToPage1()">← Back</button>
                 </div>
-                
+
                 <div class="table-wrapper">
                     <table id="productsTable">
                         <thead>
@@ -56,15 +59,16 @@
                         </tbody>
                     </table>
                 </div>
-                
-                
+
+
                 <div class="total-section">
                     <h3>Total Price: <span id="totalPrice">₹0</span></h3>
                 </div>
 
-                <button type="button" class="btn btn-primary btn-add-product" onclick="openProductModal()">+ Add Product</button>
+                <button type="button" class="btn btn-primary btn-add-product" onclick="openProductModal()">+ Add
+                    Product</button>
 
-                
+
                 <div class="button-group">
                     <button type="button" class="btn btn-primary" onclick="goToPage3()">Generate PDF</button>
                     <button type="button" class="btn btn-danger" onclick="clearAllProducts()">Clear All</button>
@@ -79,21 +83,33 @@
                     <h1>Estimation Summary</h1>
                     <button type="button" class="btn btn-back" onclick="goToPage2()">← Back</button>
                 </div>
-                
+
                 <div id="pdfContent" class="pdf-preview">
                     <div class="pdf-header">
                         <h2>Estimate</h2>
-                        <p class="company-subtitle">From: Haresh Patel
-<br>24, Samved Dreams, Palm Rd, South, Sargasan, Gandhinagar, Gujarat 382421, PH:-9574077791
-9909553591</p>
+                        <p class="company-subtitle">From: Touch Wood Furnitures
+                            <br>24, Samved Dreams, Palm Rd, South, Sargasan, Gandhinagar, Gujarat 382421, PH:-9574077791
+                            9909553591
+                        </p>
                     </div>
-                    
+
                     <div class="pdf-client-info">
-                        <p><strong>Client Name:</strong> <span id="pdfClientName">-</span></p>
-                        <p><strong>Phone:</strong> <span id="pdfClientPhone">-</span></p>
-                        <p><strong>Date:</strong> <span id="pdfDate">-</span></p>
+
+                        <!-- Left Side: Client Info -->
+                        <div class="pdf-client-left">
+                            <p><strong>Client Name:</strong> <span id="pdfClientName">-</span></p>
+                            <p><strong>Phone:</strong> <span id="pdfClientPhone">-</span></p>
+                            <p><strong>Date:</strong> <span id="pdfDate">-</span></p>
+                        </div>
+
+                        <!-- Right Side: Logo + GST -->
+                        <div class="pdf-client-right">
+                            <img src="./LOGO.png" alt="Company Logo">
+                            <p><strong>GST No:</strong> 24AUCPP0736G2ZN</p>
+                        </div>
+
                     </div>
-                    
+
                     <div class="pdf-products">
                         <h3>Products</h3>
                         <table id="pdfProductsTable">
@@ -111,13 +127,14 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div class="pdf-total">
                         <h3>Total Estimation: <span id="pdfTotalPrice">₹0</span></h3>
                     </div>
                 </div>
-                
-                <button type="button" class="btn btn-primary btn-download" onclick="downloadPDF()">📥 Download PDF</button>
+
+                <button type="button" class="btn btn-primary btn-download" onclick="downloadPDF()">📥 Download
+                    PDF</button>
             </div>
         </div>
     </div>
@@ -129,7 +146,7 @@
                 <h2>Add Product</h2>
                 <button type="button" class="modal-close" onclick="closeProductModal()">×</button>
             </div>
-            
+
             <form id="productForm">
                 <div class="form-group">
                     <label for="productCategory">Category *</label>
@@ -156,36 +173,37 @@
                         <option value="PARTITION">PARTITION</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="productTitle">Title</label>
                     <input type="text" id="productTitle" placeholder="Enter product title">
                 </div>
-                
+
                 <div class="form-group">
                     <label>Measurement in Inch *</label>
                     <div class="measurement-group">
-                        <input type="number" id="productLength" placeholder="Length" min="0" step="0.01" required>
+                        <input type="number" id="productLength" placeholder="Height" min="0" step="0.01" required>
                         <span class="measurement-separator">×</span>
                         <input type="number" id="productWidth" placeholder="Width" min="0" step="0.01" required>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="productSqft">Total SQFT</label>
                     <input type="text" id="productSqft" placeholder="Auto-calculated" readonly>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="productPricePerSqft">Price per SQFT *</label>
-                    <input type="number" id="productPricePerSqft" placeholder="Enter price" min="0" step="0.01" required>
+                    <input type="number" id="productPricePerSqft" placeholder="Enter price" min="0" step="0.01"
+                        required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="productTotalPrice">Total Price</label>
                     <input type="text" id="productTotalPrice" placeholder="Auto-calculated" readonly>
                 </div>
-                
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Cancel</button>
                     <button type="button" class="btn btn-primary" onclick="addProduct()">Add Product</button>
@@ -196,4 +214,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
