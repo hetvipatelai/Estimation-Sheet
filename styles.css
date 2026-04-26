@@ -156,7 +156,10 @@ input[readonly] {
 }
 
 .measurement-group input {
-    flex: 1;
+    flex: 0.3;
+    width: 60%;
+    max-width: 150px;
+
 }
 
 .measurement-separator {
@@ -420,7 +423,22 @@ tbody tr td:last-child {
     color: var(--primary-color);
 }
 
+/* .pdf-client-info {
+    background-color: var(--light-bg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: 6px;
+    margin-bottom: var(--spacing-lg);
+    font-size: 14px;
+} */
+
+.pdf-client-info p {
+    margin: var(--spacing-xs) 0;
+}
+
 .pdf-client-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     background-color: var(--light-bg);
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: 6px;
@@ -428,8 +446,17 @@ tbody tr td:last-child {
     font-size: 14px;
 }
 
-.pdf-client-info p {
-    margin: var(--spacing-xs) 0;
+.pdf-client-left p {
+    margin: 4px 0;
+}
+
+.pdf-client-right {
+    text-align: right;
+}
+
+.pdf-client-right img {
+    max-width: 120px;
+    margin-bottom: 6px;
 }
 
 .pdf-products {
